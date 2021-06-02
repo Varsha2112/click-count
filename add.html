@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> click & count </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        body{
+            display : flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        </style>
+
+</head>
+<body>
+    <h1 id="headingTotal">0</h1>
+   <input id="inputamt" type="text">
+   <input id="inputdesc" type="text">
+    <button id="btnaddexpense">+</button>
+    
+
+    <script>
+
+        //get heading element
+        const headingEl = document.querySelector("#headingTotal");
+
+        //get reference to desc element
+        const inputdescEl = document.querySelector("#inputdesc");
+        const inputElement = document.querySelector("#inputamt");
+
+        let totalexpense = 0; //init value of expense at 0
+
+        //set heading element to totalexpense
+        headingEl.textContent = totalexpense;
+
+        const allexpense = [];
+
+        //onbuttonclick and inputamt to totalexpense
+        function addexpensetotal(){
+
+            const expenseitem = {};
+            //read value from inputamt
+            const textamt = inputElement.value;
+            //console.log({ textamt });
+
+            //read desc from inputdesc
+            const textdesc = inputdescEl.value;
+            //console.log({ textdesc, textamt });
+
+            //convert it to no
+            const expense = parseInt(textamt, 10);
+            
+
+            //put it in object
+            expenseitem.desc = textdesc;
+            expenseitem.amt = expense;
+            //console.log({ expenseitem });
+
+            allexpense.push(expenseitem);
+
+            console.table(allexpense);
+
+            //add that value to totalexpense
+            totalexpense = totalexpense + expense;
+            //console.log({ totalexpense });
+
+            //set heading element to totalexpense
+            headingEl.textContent = totalexpense;
+        }
+
+         
+        //get the btn element
+        const element = document.querySelector("#btnaddexpense");
+        
+        //console.log(element);
+        // listen to click event
+        element.addEventListener("click", addexpensetotal, false);
+     
+       
+        
+        </script>
+
+</body>
+</html>
